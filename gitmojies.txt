@@ -1,0 +1,7 @@
+✨  :sparkles: Nueva funcionalidad
+🐛	:bug:	Corrección de bug
+🔥	:fire:	Eliminación de código
+♻️	:recycle:	Refactorización
+📝	:memo:	Documentación
+🚀	:rocket:	Deploy o publicación
+🎉	:tada:	Inicio del proyecto
