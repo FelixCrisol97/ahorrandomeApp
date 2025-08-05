@@ -18,3 +18,13 @@ CREATE TABLE gasto (
     usuario_id UUID REFERENCES usuario(id),
     categoria_id UUID REFERENCES categoria(id)
 );
+
+
+CREATE TABLE ingreso (
+    id UUID PRIMARY KEY,
+    monto DECIMAL(10,2),
+    fecha DATE,
+    fuente VARCHAR(100),
+    descripcion TEXT,
+    usuario_id UUID REFERENCES usuario(id)
+);

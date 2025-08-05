@@ -3,3 +3,4 @@ spring:
     name: ahorrandomeApp
 
 server:
+  port: 8080
