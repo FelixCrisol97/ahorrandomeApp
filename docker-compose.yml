@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_gastos_app
+    environment:
+      POSTGRES_USER: crisol
+      POSTGRES_PASSWORD: "Crisol97@"
+      POSTGRES_DB: gastos_diarios
+    volumes:
+      - gastos_diarios:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  gastos_diarios:

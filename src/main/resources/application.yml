@@ -1,6 +1,29 @@
 spring:
   application:
     name: ahorrandomeApp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gastos_diarios
+    username: crisol
+    password: Crisol97@
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: none
+        format_sql: true
+        use_sql_comments: true
 
 server:
   port: 8080
+  servlet:
+    context-path: /gastos_diarios/v1
+
+loggin:
+  level:
+    org.springframework.transaction: TRACE
+    org.springframework.orm.jpa.JpaTransactionManager: TRACE
+    org.hibernate.SQL: DEBUG
+

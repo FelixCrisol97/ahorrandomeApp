@@ -1,0 +1,14 @@
+package com.crisol.ahorrandome.exception;
+
+public enum ErrorType {
+    USER_NOT_FOUND,
+    VALIDATION_ERROR,
+    AUTHENTICATION_FAILED,
+    DATABASE_ERROR,
+    TRANSACTION_FAILURE,
+    GENERIC_ERROR,
+    ACCESS_DENIED,
+    RESOURCE_CONFLICT,
+    BAD_REQUEST,
+    EXTERNAL_SERVICE_FAILURE;
+}
