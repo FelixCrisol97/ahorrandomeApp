@@ -1,6 +1,12 @@
 spring:
   application:
     name: ahorrandomeApp
+  # Seguridad básica para entorno DEV
+  security:
+    user:
+      name: admin
+      password: 12345
+      roles: ADMIN
   datasource:
     url: jdbc:postgresql://localhost:5432/gastos_diarios
     username: crisol
@@ -8,7 +14,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:

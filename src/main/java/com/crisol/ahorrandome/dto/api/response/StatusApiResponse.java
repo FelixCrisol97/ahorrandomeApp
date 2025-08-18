@@ -1,0 +1,22 @@
+package com.crisol.ahorrandome.dto.api.response;
+
+public enum StatusApiResponse {
+    SUCCESS,
+    CREATED,
+    ACCEPTED,
+    NO_CONTENT,
+    BAD_REQUEST,
+    INTERNAL_SERVER_ERROR,
+    SERVICE_UNAVAILABLE,
+    NOT_IMPLEMENTED,
+    METHOD_NOT_ALLOWED,
+    UNPROCESSABLE_ENTITY,
+    GATEWAY_TIMEOUT,
+    ERROR,
+    NOT_FOUND,
+    VALIDATION_ERROR,
+    CONFLICT,
+    UNAUTHORIZED,
+    FORBIDDEN,
+    UNKNOWN_ERROR;
+}
