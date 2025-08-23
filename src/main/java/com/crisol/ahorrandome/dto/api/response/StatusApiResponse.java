@@ -18,5 +18,15 @@ public enum StatusApiResponse {
     CONFLICT,
     UNAUTHORIZED,
     FORBIDDEN,
-    UNKNOWN_ERROR;
+    EMAIL_ALREADY_EXISTS,
+    UNKNOWN_ERROR,
+    EMAIL,
+    USERNAME,
+    PASSWORD,
+    FIRST_NAME,
+    LAST_NAME,
+    AGE,
+    ADDRESS,
+    PHONE_NUMBER,
+    BIRTHDATE
 }

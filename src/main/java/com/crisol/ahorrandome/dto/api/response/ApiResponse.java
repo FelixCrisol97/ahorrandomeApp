@@ -36,7 +36,8 @@ public class ApiResponse<T> {
     @Data
     @Builder
     @AllArgsConstructor
-    @NoArgsConstructor
+    @NoArgsConstructor    
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Meta {
         private String transactionId; // Identificador único de la transacción
         private LocalDateTime timestamp; // Marca de tiempo de la respuesta
@@ -51,7 +52,8 @@ public class ApiResponse<T> {
     @Data
     @Builder
     @AllArgsConstructor
-    @NoArgsConstructor
+    @NoArgsConstructor    
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Pagination {
         private int page; // Página actual
         private int size; // Tamaño de página
@@ -66,6 +68,7 @@ public class ApiResponse<T> {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class ErrorDetail {
         private String code; // Código interno de error
         private String message; // Mensaje amigable
@@ -124,33 +127,18 @@ public class ApiResponse<T> {
      * Construye una respuesta de error con múltiples errores.
      */
     public static <T> ApiResponse<T> error(
-            String code,
-            String message,
-            String field,
-            Exception ex,
-            String path) {
-
-        StackTraceElement element = ex.getStackTrace()[0]; // obtenemos el primer punto de fallo
-        Throwable cause = ex.getCause();
-
-        ErrorDetail errorDetail = ErrorDetail.builder()
-                .code(code)
-                .message(message)
-                .field(field)
-                .exception(ex.getClass().getSimpleName())
-                .line(element.getLineNumber())
-                .cause(cause != null
-                        ? cause.getClass().getSimpleName() + ": " + cause.getMessage()
-                        : StatusApiResponse.UNKNOWN_ERROR.name())
-                .path(path)
-                .build();
+            ErrorDetail errorDetail,           
+            HttpStatus httpStatus,
+            StatusApiResponse status
+            
+            ) {
 
         return ApiResponse.<T>builder()
                 .meta(Meta.builder()
                         .transactionId(UUID.randomUUID().toString())
                         .timestamp(LocalDateTime.now())
-                        .status(StatusApiResponse.ERROR.name())
-                        .httpCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        .status(status.name())
+                        .httpCode(httpStatus.value())
                         .build())
                 .errors(List.of(errorDetail))
                 .build();

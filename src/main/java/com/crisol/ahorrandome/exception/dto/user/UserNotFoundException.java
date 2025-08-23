@@ -1,4 +1,4 @@
-package com.crisol.ahorrandome.exception.user;
+package com.crisol.ahorrandome.exception.dto.user;
 
 import java.time.LocalDateTime;
 

@@ -47,10 +47,10 @@ public class UserController {
 
     // ------------------- OBTENER USUARIO POR ID -------------------
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<List<User>>> getUserById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<User>> getUserById(@PathVariable Long id) {
         User user = userService.findById(id);
 
-        ApiResponse<List<User>> data = ApiResponse.success(List.of(user));
+        ApiResponse<User> data = ApiResponse.success(user);
         
         return ResponseEntity.ok(data);
     }
@@ -67,23 +67,23 @@ public class UserController {
 
     // ------------------- ACTUALIZAR USUARIO EXISTENTE -------------------
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<List<User>>> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<ApiResponse<User>> updateUser(@PathVariable Long id, @RequestBody User user) {
         // Aseguramos que el ID del path y el del body coincidan
         user.setId(id);
         
         User updatedUser = userService.save(user);
 
-        ApiResponse<List<User>> data = ApiResponse.success(List.of(updatedUser));
+        ApiResponse<User> data = ApiResponse.success(updatedUser);
 
         return ResponseEntity.ok(data);
     }
 
     // ------------------- ELIMINAR USUARIO -------------------
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<List<User>>> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<User>> deleteUser(@PathVariable Long id) {
         userService.deleteById(id);
         
-        ApiResponse<List<User>> data = ApiResponse.success(List.of(new User(id)));
+        ApiResponse<User> data = ApiResponse.success(new User(id));
 
         return ResponseEntity.ok(data);
     }

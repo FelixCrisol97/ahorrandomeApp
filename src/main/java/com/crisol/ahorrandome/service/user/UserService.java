@@ -3,12 +3,14 @@ package com.crisol.ahorrandome.service.user;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.crisol.ahorrandome.dto.user.UserInfo;
 import com.crisol.ahorrandome.exception.ErrorType;
-import com.crisol.ahorrandome.exception.user.UserNotFoundException;
+import com.crisol.ahorrandome.exception.dto.user.UserNotFoundException;
 import com.crisol.ahorrandome.model.user.User;
 import com.crisol.ahorrandome.repository.user.UserRepository;
+
 
 
 /**
@@ -36,6 +38,7 @@ public class UserService {
      * 
      * @return Lista de todos los usuarios en la base de datos.
      */
+    @Transactional(readOnly=true)
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -65,7 +68,8 @@ public class UserService {
      * @param user Objeto usuario que contiene al menos el ID.
      * @return Usuario encontrado.
      * @throws UserNotFoundException Si no existe un usuario con el ID proporcionado.
-     */
+     */    
+    @Transactional(readOnly=true)
     public User findById(User user) {
         return findById(user.getId()); // reutiliza el método anterior
     }
@@ -95,6 +99,7 @@ public class UserService {
      * @return Usuario encontrado.
      * @throws UserNotFoundException Si no existe un usuario con el nombre proporcionado.
      */
+    @Transactional(readOnly=true)
     public User findByUsername(User user) {
         return findByUsername(user.getName());
     }
@@ -124,6 +129,7 @@ public class UserService {
      * @return Usuario encontrado.
      * @throws UserNotFoundException Si no existe un usuario con el email proporcionado.
      */
+    @Transactional(readOnly=true)
     public User findByEmail(User user) {
         return findByEmail(user.getEmail());
     }
@@ -138,6 +144,7 @@ public class UserService {
      * @param user Usuario a guardar.
      * @return Usuario guardado.
      */
+    @Transactional
     public User save(User user) {
         return userRepository.save(user);
     }
@@ -158,6 +165,7 @@ public class UserService {
      * 
      * @param user Objeto usuario que contiene al menos el ID.
      */
+    @Transactional
     public void deleteById(User user) {
         deleteById(user.getId());
     }
