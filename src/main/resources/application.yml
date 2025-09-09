@@ -8,13 +8,19 @@ spring:
       password: 12345
       roles: ADMIN
   datasource:
-    url: jdbc:postgresql://localhost:5432/gastos_diarios
+    url: jdbc:postgresql://localhost:5432/ahorrandomeapp_db
     username: crisol
     password: Crisol97@
     driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      auto-commit: false
+      pool-name: HikariPool_AhorrandomeApp
+
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:

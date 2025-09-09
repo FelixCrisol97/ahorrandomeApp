@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.crisol.ahorrandome.dto.api.response.ApiResponse;
 import com.crisol.ahorrandome.dto.api.response.ApiResponse.ErrorDetail;
 import com.crisol.ahorrandome.dto.api.response.StatusApiResponse;
+import com.crisol.ahorrandome.exception.dto.user.UserNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
